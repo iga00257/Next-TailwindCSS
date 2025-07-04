@@ -45,13 +45,13 @@ export default function Home() {
         </div>
         <div className="flex gap-2.5">
           <button 
-            className="cursor-pointer border-none rounded-[30px] bg-[var(--color-red-dark)] px-5 py-2.5 h-[52px] text-[var(--color-white)] text-[var(--font-size-body-regular-l)] font-[var(--font-weight-body-regular-l)] leading-[var(--line-height-body-regular-l)]"
+            className="cursor-pointer border-none rounded-[30px] bg-[var(--color-red-dark)] px-5 py-2.5 h-[52px] text-[var(--color-white)]  font-[var(--font-weight-body-regular-l)] leading-[var(--line-height-body-regular-l)]"
             onClick={() => changeLanguage(router, 'zh-TW')}
           >
             中文
           </button>
           <button 
-            className="cursor-pointer border-none rounded-[30px] bg-[var(--color-red-dark)] px-5 py-2.5 h-[52px] text-[var(--color-white)] text-[var(--font-size-body-regular-l)] font-[var(--font-weight-body-regular-l)] leading-[var(--line-height-body-regular-l)]"
+            className="cursor-pointer border-none rounded-[30px] bg-[var(--color-red-dark)] px-5 py-2.5 h-[52px] text-[var(--color-white)]  font-[var(--font-weight-body-regular-l)] leading-[var(--line-height-body-regular-l)]"
             onClick={() => changeLanguage(router, 'en')}
           >
             English
