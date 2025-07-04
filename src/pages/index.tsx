@@ -36,29 +36,29 @@ export default function Home() {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <link rel='icon' href='/favicon.ico' />
       </Head>
-      <div className="flex flex-col justify-center items-center gap-5 h-full">
-        <div className="text-[var(--font-size-body-bold-l)] font-[var(--font-weight-body-bold-l)] leading-[var(--line-height-body-bold-l)]">
+      <div className='flex h-full flex-col items-center justify-center gap-5'>
+        <div className='leading-[var(--line-height-body-bold-l)] font-[var(--font-weight-body-bold-l)] text-[var(--font-size-body-bold-l)]'>
           {t('title')}
         </div>
-        <div className="text-[var(--font-size-body-regular-l)] font-[var(--font-weight-body-regular-l)] leading-[var(--line-height-body-regular-l)]">
+        <div className='leading-[var(--line-height-body-regular-l)] font-[var(--font-weight-body-regular-l)] text-[var(--font-size-body-regular-l)]'>
           {t('description')}
         </div>
-        <div className="flex gap-2.5">
-          <button 
-            className="cursor-pointer border-none rounded-[30px] bg-[var(--color-red-dark)] px-5 py-2.5 h-[52px] text-[var(--color-white)]  font-[var(--font-weight-body-regular-l)] leading-[var(--line-height-body-regular-l)]"
+        <div className='flex gap-2.5'>
+          <button
+            className='h-[52px] cursor-pointer rounded-[30px] border-none bg-[var(--color-red-dark)] px-5 py-2.5 leading-[var(--line-height-body-regular-l)] font-[var(--font-weight-body-regular-l)] text-[var(--color-white)]'
             onClick={() => changeLanguage(router, 'zh-TW')}
           >
             中文
           </button>
-          <button 
-            className="cursor-pointer border-none rounded-[30px] bg-[var(--color-red-dark)] px-5 py-2.5 h-[52px] text-[var(--color-white)]  font-[var(--font-weight-body-regular-l)] leading-[var(--line-height-body-regular-l)]"
+          <button
+            className='h-[52px] cursor-pointer rounded-[30px] border-none bg-[var(--color-red-dark)] px-5 py-2.5 leading-[var(--line-height-body-regular-l)] font-[var(--font-weight-body-regular-l)] text-[var(--color-white)]'
             onClick={() => changeLanguage(router, 'en')}
           >
             English
           </button>
         </div>
-        <div className="flex items-center gap-2.5">
-          <span className="text-[var(--font-size-body-regular-l)] font-[var(--font-weight-body-regular-l)] leading-[var(--line-height-body-regular-l)]">
+        <div className='flex items-center gap-2.5'>
+          <span className='leading-[var(--line-height-body-regular-l)] text-[var(--font-size-body-regular-l)]'>
             icon-sample
           </span>
           <ArrowIcon width={20} height={20} color='green' />
