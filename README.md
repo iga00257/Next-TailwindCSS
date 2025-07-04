@@ -106,9 +106,9 @@ pnpm lint
 
 ```css
 @theme {
-  --color-red-dark: #FF0000;
-  --color-white: #FFFFFF;
-  
+  --color-red-dark: #ff0000;
+  --color-white: #ffffff;
+
   --font-size-body-bold-l: 18px;
   --font-weight-body-bold-l: 700;
   --line-height-body-bold-l: 24px;

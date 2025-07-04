@@ -51,7 +51,7 @@ export default function Home() {
             中文
           </button>
           <button
-            className='h-[52px] cursor-pointer rounded-[30px] border-none bg-[var(--color-red-dark)] px-5 py-2.5 leading-[var(--line-height-body-regular-l)] font-[var(--font-weight-body-regular-l)] text-[var(--color-white)]'
+            className='mb-3 h-[52px] cursor-pointer rounded-[30px] border-none bg-[var(--color-red-dark)] px-5 py-2.5 leading-[var(--line-height-body-regular-l)] font-[var(--font-weight-body-regular-l)] text-[var(--color-white)]'
             onClick={() => changeLanguage(router, 'en')}
           >
             English

@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @layer base {
   html {
@@ -144,16 +144,16 @@
 }
 
 @theme {
-  --color-red-dark: #FF0000;
-  --color-white: #FFFFFF;
-  
+  --color-red-dark: #ff0000;
+  --color-white: #ffffff;
+
   --font-family-body: Inter, sans-serif;
-  
+
   --font-size-body-bold-l: 18px;
   --font-weight-body-bold-l: 700;
   --line-height-body-bold-l: 24px;
-  
+
   --font-size-body-regular-l: 16px;
   --font-weight-body-regular-l: 400;
   --line-height-body-regular-l: 22px;
-} 
+}
