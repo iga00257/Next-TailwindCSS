@@ -48,6 +48,27 @@ interface IConfig {
   method: Method;
 }
 
+const predicator: Predicator = (object) => {
+  // 处理字符串类型
+  if (typeof object === 'string') {
+    return object.trim();
+  }
+
+  if (Array.isArray(object)) {
+    return object.filter((value) => !isUndefined(value));
+  }
+
+  // 只对对象类型应用 flow 处理
+  if (typeof object === 'object' && object !== null) {
+    return flow(
+      omitBy(isUndefined),
+      mapValues((value) => (typeof value === 'string' ? value.trim() : value)),
+    )(object);
+  }
+
+  return object;
+};
+
 class Service<TResponse = unknown, TRequest = unknown>
   implements IServicePrototype<TResponse, TRequest>
 {
@@ -121,13 +142,13 @@ class Service<TResponse = unknown, TRequest = unknown>
     const apiConfig = this.withAccessToken
       ? Object.assign(this.getApiConfig(), {
           headers: {
-            Authorization: this.getAccessToken() && `Bearer ${this.getAccessToken()}`,
+            ...(this.getAccessToken() ? { Authorization: `Bearer ${this.getAccessToken()}` } : {}),
             ...this.getApiConfig().headers,
           },
         })
       : this.config;
 
-    const axiosInstance = axios.create(apiConfig);
+    const axiosInstance = axios.create(apiConfig as AxiosRequestConfig);
 
     axiosInstance.interceptors.request.use(
       (config) => {
@@ -200,16 +221,6 @@ class Service<TResponse = unknown, TRequest = unknown>
     const denormalizedParameter = this.denormalizer(parameter);
     const casedParameter = transformKeys(denormalizedParameter, this.getOption().toRequestCase);
 
-    const predicator: Predicator = (object) => {
-      if (Array.isArray(object)) {
-        return object.filter((value) => !isUndefined(value));
-      }
-      return flow(
-        omitBy(isUndefined),
-        mapValues((value) => (typeof value === 'string' ? value.trim() : value)),
-      )(object);
-    };
-
     const predicatedParameter = toPredicateValues(casedParameter, predicator);
 
     return predicatedParameter;
@@ -239,16 +250,6 @@ class Service<TResponse = unknown, TRequest = unknown>
   handleSuccess(casedData: unknown): TResponse {
     const normalizedData = this.normalizer(casedData as TResponse);
 
-    const predicator: Predicator = (object) => {
-      if (Array.isArray(object)) {
-        return object.filter((value) => !isUndefined(value));
-      }
-      return flow(
-        omitBy(isUndefined),
-        mapValues((value) => (typeof value === 'string' ? value.trim() : value)),
-      )(object);
-    };
-
     const predicatedData = toPredicateValues(normalizedData, predicator);
 
     return predicatedData as TResponse;
@@ -263,7 +264,7 @@ class Service<TResponse = unknown, TRequest = unknown>
   }
 
   async handleFailure(error: AxiosError): Promise<never> {
-    const isAuthError = error.status === 401;
+    const isAuthError = error.response?.status === 401;
     const errorData = {
       name: this.name,
       status: error.status || 500,
